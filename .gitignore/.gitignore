@@ -1,0 +1,20 @@
+# ignore WebStorm system folder "idea"
+idea/
+
+# ignore node/grunt dependency directories
+node_modules/
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ignore private/secret files
+*.der
+*.key
+*.pem
