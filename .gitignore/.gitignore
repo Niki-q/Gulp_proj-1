@@ -1,5 +1,5 @@
 # ignore WebStorm system folder "idea"
-idea/
+.idea/
 
 # ignore node/grunt dependency directories
 node_modules/
