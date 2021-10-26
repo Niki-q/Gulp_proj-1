@@ -18,3 +18,9 @@ node_modules/
 *.der
 *.key
 *.pem
+
+# track these files, if they exist
+!.gitignore
+!.editorconfig
+!.phpcs.xml.dist
+!.env.example
