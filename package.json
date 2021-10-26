@@ -1,0 +1,22 @@
+{
+  "name": "elfbar_proj",
+  "version": "1.0.0",
+  "description": "package from my project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niki-q/Elfbar_proj.git"
+  },
+  "author": "Niki_q",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niki-q/Elfbar_proj/issues"
+  },
+  "homepage": "https://github.com/Niki-q/Elfbar_proj#readme",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}
