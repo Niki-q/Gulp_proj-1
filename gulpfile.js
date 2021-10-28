@@ -122,10 +122,6 @@ function images(){
         .pipe(browsersync.stream())
 }
 
-gulp.task('svgSprite', function () {
-
-})
-
 function watchFiles(params){
     gulp.watch([path.watch.html],html)
     gulp.watch([path.watch.css],css)
@@ -139,6 +135,7 @@ function clean(params) {
 
 let build = gulp.series(clean, gulp.parallel(js, css, html, images));
 let watch = gulp.parallel(build,watchFiles,browserSync);
+
 
 exports.images = images;
 exports.js = js;

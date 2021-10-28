@@ -2669,7 +2669,7 @@ gulp-group-css-media-queries@^1.2.2:
     plugin-error "^1.0.1"
     through2 "^2.0.3"
 
-gulp-imagemin@^7.0.0:
+gulp-imagemin@7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/gulp-imagemin/-/gulp-imagemin-7.1.0.tgz#d1810a908fb64b4fbf15a750d303d988443e68cf"
   integrity sha512-6xBTNybmPY2YrvrhhlS8Mxi0zn0ypusLon63p9XXxDtIf7U7c6KcViz94K7Skosucr3378A6IY2kJSjJyuwylQ==
