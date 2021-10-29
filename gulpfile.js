@@ -9,20 +9,23 @@ let path = {
         css:`${project_folder}/css/`,
         js:`${project_folder}/js/`,
         img:`${project_folder}/img/`,
-        fonts:`${project_folder}/fonts/`
+        svg:`${project_folder}/svg/`
+        // fonts:`${project_folder}/fonts/`
     },
     src: {
         html:[`${source_folder}/**/*.html`,`!${source_folder}/**/_*.html`],
         css:`${source_folder}/scss/index.scss`,
         js:[`${source_folder}/js/*.js`,`!${source_folder}/js/_*.js`],
         img:`${source_folder}/img/**/*.+(png|jpg|gif|ico|svg|webp)`,
-        fonts:`${source_folder}/fonts/*.ttf`
+        svg:`${source_folder}/svg/**/*.svg`
+        // fonts:`${source_folder}/fonts/*.ttf`
     },
     watch: {
         html:`${source_folder}/**/*.html`,
         css:`${source_folder}/scss/**/*.scss`,
         js:`${source_folder}/js/**/*.js`,
-        img:`${source_folder}/img/**/*.+(png|jpg|gif|ico|svg|webp)`
+        img:`${source_folder}/img/**/*.+(png|jpg|gif|ico|svg|webp)`,
+        svg:`${source_folder}/svg/**/*.svg`
     },
     clean:`./${project_folder}/`
 }
@@ -41,7 +44,8 @@ let { src, dest } = require('gulp'),
     webp = require('gulp-webp'),
     webphtml = require('gulp-webp-html'),
     webpcss = require('gulp-webp-css'),
-    babel = require('gulp-babel')
+    babel = require('gulp-babel'),
+    svgSprite = require('gulp-svg-sprite')
 
 function browserSync(params) {
     browsersync.init({
@@ -122,21 +126,34 @@ function images(){
         .pipe(browsersync.stream())
 }
 
+function svg(){
+    return src(path.src.svg)
+        .pipe(svgSprite({
+            mode:{
+                stack:{
+                    sprite:`${path.build.svg}/icons.svg`
+                }
+            }
+        }))
+        .pipe(dest(path.build.svg))
+}
+
 function watchFiles(params){
     gulp.watch([path.watch.html],html)
     gulp.watch([path.watch.css],css)
     gulp.watch([path.watch.js],js)
     gulp.watch([path.watch.img],images)
+    gulp.watch([path.watch.svg],svg)
 }
 
 function clean(params) {
     return del(path.clean)
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, html, images));
+let build = gulp.series(clean, gulp.parallel(js, css, html, images, svg));
 let watch = gulp.parallel(build,watchFiles,browserSync);
 
-
+exports.svg = svg;
 exports.images = images;
 exports.js = js;
 exports.css = css;
