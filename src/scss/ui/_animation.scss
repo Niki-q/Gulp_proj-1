@@ -1,0 +1,11 @@
+@keyframes activate{
+  from {
+    display: none;
+    opacity: 0;
+  }
+
+  to {
+    display: inherit;
+    opacity: 1;
+  }
+}

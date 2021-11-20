@@ -2,7 +2,6 @@
 let project_folder = 'dist';
 let source_folder = 'src';
 
-
 let path = {
     build: {
         html:`${project_folder}/`,
@@ -14,7 +13,7 @@ let path = {
     },
     src: {
         html:[`${source_folder}/**/*.html`,`!${source_folder}/**/_*.html`],
-        css:`${source_folder}/scss/index.scss`,
+        css:[`${source_folder}/scss/**/*.scss`,`!${source_folder}/scss/**/_*.scss`],
         js:[`${source_folder}/js/*.js`,`!${source_folder}/js/_*.js`],
         img:`${source_folder}/img/**/*.+(png|jpg|gif|ico|svg|webp)`,
         svg:`${source_folder}/svg/**/*.svg`
@@ -131,7 +130,8 @@ function svg(){
         .pipe(svgSprite({
             mode:{
                 stack:{
-                    sprite:`${path.build.svg}/icons.svg`
+                    sprite:`${path.build.svg}/icons.svg`,
+                    example:true
                 }
             }
         }))
@@ -152,6 +152,8 @@ function clean(params) {
 
 let build = gulp.series(clean, gulp.parallel(js, css, html, images, svg));
 let watch = gulp.parallel(build,watchFiles,browserSync);
+
+exports.clean = clean;
 
 exports.svg = svg;
 exports.images = images;

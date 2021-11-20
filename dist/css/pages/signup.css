@@ -175,30 +175,6 @@ input {
   letter-spacing: -0.15px;
 }
 
-@-webkit-keyframes activate {
-  from {
-    display: none;
-    opacity: 0;
-  }
-
-  to {
-    display: inherit;
-    opacity: 1;
-  }
-}
-
-@keyframes activate {
-  from {
-    display: none;
-    opacity: 0;
-  }
-
-  to {
-    display: inherit;
-    opacity: 1;
-  }
-}
-
 .text-field {
   background-color: #2A2C36;
   -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
@@ -278,10 +254,6 @@ input {
 
 .input-container__message {
   display: none;
-}
-
-body {
-  background-color: #1E1F28;
 }
 @supports (-webkit-appearance:none){
 

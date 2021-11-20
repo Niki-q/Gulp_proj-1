@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<title>SVG stack preview | svg-sprite</title>
+		<style>@charset "UTF-8";body{padding:0;margin:0;color:#666;background:#fafafa;font-family:Arial,Helvetica,sans-serif;font-size:1em;line-height:1.4}header{display:block;padding:3em 3em 2em 3em;background-color:#fff}header p{margin:2em 0 0 0}section{border-top:1px solid #eee;padding:2em 3em 0 3em}section ul{margin:0;padding:0}section li{display:inline;display:inline-block;background-color:#fff;position:relative;margin:0 2em 2em 0;vertical-align:top;border:1px solid #ccc;padding:1em 1em 3em 1em;cursor:default}.icon-box{margin:0;width:144px;height:144px;position:relative;background:#ccc url("data:image/gif;base64,R0lGODlhDAAMAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozQjk4OTI0MUY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozQjk4OTI0MkY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNCOTg5MjNGRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjNCOTg5MjQwRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAAAwADAAAAhaEH6mHmmzcgzJAUG/NVGrfOZ8YLlABADs=") top left repeat;border:1px solid #ccc;display:table-cell;vertical-align:middle;text-align:center}.icon{display:inline;display:inline-block}h1{margin-top:0}h2{margin:0;padding:0;font-size:1em;font-weight:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:absolute;left:1em;right:1em;bottom:1em}footer{display:block;margin:0;padding:0 3em 3em 3em}footer p{margin:0;font-size:.7em}footer a{color:#0f7595;margin-left:0}</style>
+
+<!--
+
+Sprite shape dimensions
+====================================================================================================
+You will need to set the sprite shape dimensions via CSS when you use them as stack SVGs, otherwise
+they would become a huge 100% in size. You may use the following dimension classes for doing so.
+They might well be outsourced to an external stylesheet of course.
+
+-->
+
+<style type="text/css">
+	.svg-Big_icon_camera_inactive-dims { width: 52px; height: 52px; }
+	.svg-Big_icon_camera_pressed-dims { width: 52px; height: 52px; }
+	.svg-Big_icon_search-dims { width: 52px; height: 52px; }
+	.svg-Big_icon_search_inactive-dims { width: 52px; height: 52px; }
+	.svg-activated_bag_icon-dims { width: 44px; height: 44px; }
+	.svg-activated_icon_favorites_activated-dims { width: 52px; height: 52px; }
+	.svg-baseline-photo_camera-24px2-dims { width: 26px; height: 26px; }
+	.svg-baseline-search-24px1-dims { width: 24px; height: 24px; }
+	.svg-close-dims { width: 24px; height: 24px; }
+	.svg-icon_pensil-dims { width: 24px; height: 24px; }
+	.svg-inactive_add-dims { width: 44px; height: 44px; }
+	.svg-inactive_arrow_button-dims { width: 36px; height: 36px; }
+	.svg-inactive_bag_icon-dims { width: 44px; height: 44px; }
+	.svg-inactive_icon_favorites_-dims { width: 52px; height: 52px; }
+	.svg-outline-check-24pxcheck-dims { width: 24px; height: 24px; }
+	.svg-outline-close-24pxcross-dims { width: 24px; height: 24px; }
+	.svg-pressed_add-dims { width: 44px; height: 44px; }
+	.svg-pressed_bag_icon-dims { width: 36px; height: 36px; }
+	.svg-pressed_icon_favorites_pressed-dims { width: 36px; height: 36px; }
+</style>
+
+<!--
+====================================================================================================
+-->
+
+	</head>
+	<body>
+		<header>
+			<h1>SVG stack preview</h1>
+			<p>This preview features an SVG stack. Please have a look at the HTML source for further details and be aware of the following constraints:</p>
+			<ul>
+				<li>Your browser has to <a href="http://caniuse.com/#feat=svg-fragment" target="_blank" rel="noopener noreferrer">support SVG fragment identifiers</a> for SVG stacks to work.</li>
+				<li>Support for SVG fragment identifiers hasn't always been that decent. For older browsers you will have to use some prolyfill like <a href="https://github.com/preciousforever/SVG-Stacker/blob/master/fixsvgstack.jquery.js" target="_blank" rel="noopener noreferrer">fixsvgstack.jquery.js</a>.</li>
+			</ul>
+		</header>
+		<section>
+
+<!--
+
+SVG stack
+====================================================================================================
+These SVG images make use of fragment identifiers (IDs) to reference certain portions of the
+external sprite. By default, all shapes inside the sprite are hidden by CSS. The `:target` pseudo
+selector is used to show the very shape that is referenced by the fragment identifier.
+
+-->
+
+			<ul>
+
+				<li title="Big_icon_camera_inactive">
+					<div class="icon-box">
+
+						<!-- Big_icon_camera_inactive -->
+						<img src="dist/svg/icons.svg#Big_icon_camera_inactive" class="svg-Big_icon_camera_inactive-dims" alt="Big_icon_camera_inactive"/>
+
+					</div>
+					<h2>Big_icon_camera_inactive</h2>
+				</li>
+				<li title="Big_icon_camera_pressed">
+					<div class="icon-box">
+
+						<!-- Big_icon_camera_pressed -->
+						<img src="dist/svg/icons.svg#Big_icon_camera_pressed" class="svg-Big_icon_camera_pressed-dims" alt="Big_icon_camera_pressed"/>
+
+					</div>
+					<h2>Big_icon_camera_pressed</h2>
+				</li>
+				<li title="Big_icon_search">
+					<div class="icon-box">
+
+						<!-- Big_icon_search -->
+						<img src="dist/svg/icons.svg#Big_icon_search" class="svg-Big_icon_search-dims" alt="Big_icon_search"/>
+
+					</div>
+					<h2>Big_icon_search</h2>
+				</li>
+				<li title="Big_icon_search_inactive">
+					<div class="icon-box">
+
+						<!-- Big_icon_search_inactive -->
+						<img src="dist/svg/icons.svg#Big_icon_search_inactive" class="svg-Big_icon_search_inactive-dims" alt="Big_icon_search_inactive"/>
+
+					</div>
+					<h2>Big_icon_search_inactive</h2>
+				</li>
+				<li title="activated_bag_icon">
+					<div class="icon-box">
+
+						<!-- activated_bag_icon -->
+						<img src="dist/svg/icons.svg#activated_bag_icon" class="svg-activated_bag_icon-dims" alt="activated_bag_icon"/>
+
+					</div>
+					<h2>activated_bag_icon</h2>
+				</li>
+				<li title="activated_icon_favorites_activated">
+					<div class="icon-box">
+
+						<!-- activated_icon_favorites_activated -->
+						<img src="dist/svg/icons.svg#activated_icon_favorites_activated" class="svg-activated_icon_favorites_activated-dims" alt="activated_icon_favorites_activated"/>
+
+					</div>
+					<h2>activated_icon_favorites_activated</h2>
+				</li>
+				<li title="baseline-photo_camera-24px2">
+					<div class="icon-box">
+
+						<!-- baseline-photo_camera-24px2 -->
+						<img src="dist/svg/icons.svg#baseline-photo_camera-24px2" class="svg-baseline-photo_camera-24px2-dims" alt="baseline-photo_camera-24px2"/>
+
+					</div>
+					<h2>baseline-photo_camera-24px2</h2>
+				</li>
+				<li title="baseline-search-24px1">
+					<div class="icon-box">
+
+						<!-- baseline-search-24px1 -->
+						<img src="dist/svg/icons.svg#baseline-search-24px1" class="svg-baseline-search-24px1-dims" alt="baseline-search-24px1"/>
+
+					</div>
+					<h2>baseline-search-24px1</h2>
+				</li>
+				<li title="close">
+					<div class="icon-box">
+
+						<!-- close -->
+						<img src="dist/svg/icons.svg#close" class="svg-close-dims" alt="close"/>
+
+					</div>
+					<h2>close</h2>
+				</li>
+				<li title="icon_pensil">
+					<div class="icon-box">
+
+						<!-- icon_pensil -->
+						<img src="dist/svg/icons.svg#icon_pensil" class="svg-icon_pensil-dims" alt="icon_pensil"/>
+
+					</div>
+					<h2>icon_pensil</h2>
+				</li>
+				<li title="inactive_add">
+					<div class="icon-box">
+
+						<!-- inactive_add -->
+						<img src="dist/svg/icons.svg#inactive_add" class="svg-inactive_add-dims" alt="inactive_add"/>
+
+					</div>
+					<h2>inactive_add</h2>
+				</li>
+				<li title="inactive_arrow_button">
+					<div class="icon-box">
+
+						<!-- inactive_arrow_button -->
+						<img src="dist/svg/icons.svg#inactive_arrow_button" class="svg-inactive_arrow_button-dims" alt="inactive_arrow_button"/>
+
+					</div>
+					<h2>inactive_arrow_button</h2>
+				</li>
+				<li title="inactive_bag_icon">
+					<div class="icon-box">
+
+						<!-- inactive_bag_icon -->
+						<img src="dist/svg/icons.svg#inactive_bag_icon" class="svg-inactive_bag_icon-dims" alt="inactive_bag_icon"/>
+
+					</div>
+					<h2>inactive_bag_icon</h2>
+				</li>
+				<li title="inactive_icon_favorites_">
+					<div class="icon-box">
+
+						<!-- inactive_icon_favorites_ -->
+						<img src="dist/svg/icons.svg#inactive_icon_favorites_" class="svg-inactive_icon_favorites_-dims" alt="inactive_icon_favorites_"/>
+
+					</div>
+					<h2>inactive_icon_favorites_</h2>
+				</li>
+				<li title="outline-check-24pxcheck">
+					<div class="icon-box">
+
+						<!-- outline-check-24pxcheck -->
+						<img src="dist/svg/icons.svg#outline-check-24pxcheck" class="svg-outline-check-24pxcheck-dims" alt="outline-check-24pxcheck"/>
+
+					</div>
+					<h2>outline-check-24pxcheck</h2>
+				</li>
+				<li title="outline-close-24pxcross">
+					<div class="icon-box">
+
+						<!-- outline-close-24pxcross -->
+						<img src="dist/svg/icons.svg#outline-close-24pxcross" class="svg-outline-close-24pxcross-dims" alt="outline-close-24pxcross"/>
+
+					</div>
+					<h2>outline-close-24pxcross</h2>
+				</li>
+				<li title="pressed_add">
+					<div class="icon-box">
+
+						<!-- pressed_add -->
+						<img src="dist/svg/icons.svg#pressed_add" class="svg-pressed_add-dims" alt="pressed_add"/>
+
+					</div>
+					<h2>pressed_add</h2>
+				</li>
+				<li title="pressed_bag_icon">
+					<div class="icon-box">
+
+						<!-- pressed_bag_icon -->
+						<img src="dist/svg/icons.svg#pressed_bag_icon" class="svg-pressed_bag_icon-dims" alt="pressed_bag_icon"/>
+
+					</div>
+					<h2>pressed_bag_icon</h2>
+				</li>
+				<li title="pressed_icon_favorites_pressed">
+					<div class="icon-box">
+
+						<!-- pressed_icon_favorites_pressed -->
+						<img src="dist/svg/icons.svg#pressed_icon_favorites_pressed" class="svg-pressed_icon_favorites_pressed-dims" alt="pressed_icon_favorites_pressed"/>
+
+					</div>
+					<h2>pressed_icon_favorites_pressed</h2>
+				</li>
+			</ul>
+
+<!--
+====================================================================================================
+-->
+
+		</section>
+		<footer>
+			<p>Generated at Sat, 20 Nov 2021 14:18:19 GMT by <a href="https://github.com/svg-sprite/svg-sprite" target="_blank" rel="noopener noreferrer">svg-sprite</a>.</p>
+		</footer>
+	</body>
+</html>

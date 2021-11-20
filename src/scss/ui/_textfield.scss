@@ -5,24 +5,56 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
+    &>.icon{
+      width: 24px;
+      height: 24px;
+      display: none;
+    }
     &__input{
       background-color: inherit;
       width: 100%;
+      border: 0;
+      padding: 0 0 0 0;
+      @extend %f,%f-Description-items;
+      color: $color_white;
+      }
+    &__label{
       @extend %f,%f-Description-items;
       color: $color_gray;
-      &:focus{
+      transition: transform 200ms;
+      position: absolute;
+      pointer-events: none;
+    }
+    }
+    &_activated{
+      &>.icon{
+        display: inherit;
+        animation-name: activate;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-play-state: paused;
       }
     }
-    &_inactive{
 
-    }
-  }
+
+
   &-small{
     height: 36px;
     width: 343px;
   }
-
-  background-color: $color_dark;
+  background-color:$color_dark;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
 }
+
+.input:focus ~ .placeholder, .input:not(:placeholder-shown) ~ .placeholder  {
+  transform: translateY(-20px);
+  @extend %f-helpertext;
+
+}
+.input-container{
+  &__message{
+    display: none;
+  }
+}
+

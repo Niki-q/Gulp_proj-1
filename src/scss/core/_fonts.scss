@@ -4,73 +4,84 @@
 //
 //@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,300&display=swap');
 
-/*Font-Classes*/
+//Constants
 
-%f-Headline{
-  font: {
-    family:Metropolis, sans-serif; // Bold
-    size: 34px;
-  }
-  line-height: 34px;
-  color: $color_white;
-}
-%f-Headline2{
-  font: {
-    family:Metropolis, sans-serif; //Semi Bold
-    size: 24px;
-  }
-  line-height: 29px;
-  color: $color_white;
-}
-%f-Headline3{
-  font: {
-    family:Metropolis, sans-serif; //Semi Bold
-    size: 18px;
-  }
-  line-height: 22px;
-  color: $color_white;
-}
-%f-Subheads{
-  font: {
-    family:Metropolis, sans-serif; //Semi Bold
-    size: 16px;
-  }
-  line-height: 16px;
-  color: $color_white;
-}
-%f-Text{
-  font: {
-    family:Metropolis, sans-serif; //regular
-    size: 16px;
-  }
-  line-height: 16px;
-  color: $color_white;
+$weight_bold:700;
 
-}
-%f-Description{
-  &-items{
+$weight_semi-bold:600;
+
+$weight_medium:500;
+
+$weight_regular:400;
+
+
+/*Font-Selectors*/
+
+%f{
+  font-family:Metropolis, sans-serif;
+  color: $color_white;
+  &-Headline{
     font: {
-      family:Metropolis, sans-serif; //Medium
-      size: 14px;
+      size: 34px;
+      weight: $weight_bold;
     }
-    line-height: 20px;
+    line-height: 34px;
   }
-  &-text{
+  &-Headline2{
     font: {
-      family:Metropolis, sans-serif; //regular
-      size: 14px;
+      size: 24px;
+      weight: $weight_semi-bold;
     }
-    line-height: 21px;
+    line-height: 29px;
+  }
+  &-Headline3{
+    font: {
+      size: 18px;
+      weight: $weight_semi-bold;
+    }
+    line-height: 22px;
+  }
+  &-Subheads{
+    font: {
+      size: 16px;
+      weight: $weight_semi-bold;
+    }
+    line-height: 16px;
+  }
+  &-Text{
+    font: {
+      size: 16px;
+      weight: $weight_regular;
+    }
+    line-height: 16px;
+  }
+  &-Description{
+    &-items{
+      font: {
+        size: 14px;
+        weight: $weight_medium;
+      }
+      line-height: 20px;
+    }
+    &-text{
+      font: {
+        size: 14px;
+        weight: $weight_regular;
+      }
+      line-height: 21px;
+      letter-spacing: -0.15px;
+    }
+  }
+  &-helpertext{
+    font: {
+      size: 11px;
+      weight: $weight_regular;
+    }
+    line-height: 11px;
     letter-spacing: -0.15px;
   }
 }
-%f-helpertext{
-  font: {
-    family:Metropolis, sans-serif; //regular
-    size: 11px;
-  }
-  line-height: 11px;
-  letter-spacing: -0.15px;
-}
+
+
 
 
