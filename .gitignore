@@ -137,3 +137,6 @@ fabric.properties
 # Lock files
 yarn.lock
 package-lock.json
+
+# dist directory
+dist/

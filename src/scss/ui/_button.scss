@@ -1,0 +1,121 @@
+.button{
+  @extend %f, %f-Description-items;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  &_big{
+    height: 48px;
+    width: 343px;
+  }
+  &_small{
+    height: 36px;
+    width: 160px;
+  }
+  &-review{
+    @extend %f-helpertext;
+    height: 36px;
+    width: 128px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    &__icon{
+      height: 24px;
+      width: 24px;
+    }
+  }
+  &_primary{
+    box-shadow: 0 4px 8px rgba(239, 54, 81, 0.35);
+    border-radius: 25px;
+    background-color: $color_primary;
+    color: $color_ordinary-text;
+    &:active{
+      opacity: 0.9;
+    }
+  }
+  &_outline{
+    color: $color_white;
+    border: 1.5px solid $color_white;
+    box-sizing: border-box;
+    border-radius: 24px;
+    background-color: transparent;
+    &:active{
+      color: $color_gray;
+      border: 1.5px solid $color_gray;
+    }
+  }
+  &-circle{
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    &__icon{
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+    }
+  }
+  &_switchable{}
+  &-add{
+    width: 36px;
+    height: 36px;
+    &:active{
+      background-color: $color_dark;
+      >svg{
+        stroke: $color-white;
+        stroke-width: 1.5px;
+      }
+    }
+    &-to-bag{
+      width: 36px;
+      height: 36px;
+    }
+    &-to-favorites{
+      width: 36px;
+      height: 36px;
+      background: $color_dark;
+      box-shadow: 0px 1px 8px rgba(11, 11, 11, 0.26);
+      stroke: white;
+      stroke-width: 0.4px;
+      &:active{
+        stroke: none;
+        background-color:$color_primary;
+      }
+    }
+  }
+  &-tags{
+    background-color: $color_dark;
+    width: 100px;
+    height: 40px;
+    @extend %f,%f-Description-items;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-radius: 8px;
+    &:hover{
+      color:$color_white;
+    }
+    &__item{
+      background-color: $color_dark;
+      @extend %f,%f-Description-items;
+      &:hover{
+        background-color: $color_dark;
+        color:$color_primary;
+      }
+    }
+    &__menu{
+      background-color: $color_dark;
+    }
+    &_unselected{
+      border: 0.4px solid $color_error;
+    }
+  }
+  &_activated{
+    background-color: $color_dark;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
+    stroke: none;
+  }
+}

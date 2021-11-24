@@ -130,8 +130,8 @@ function svg(){
         .pipe(svgSprite({
             mode:{
                 stack:{
-                    sprite:`${path.build.svg}/icons.svg`,
-                    example:true
+                    sprite:`icons.svg`,
+                    example:false
                 }
             }
         }))

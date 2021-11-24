@@ -1,60 +1,140 @@
+.input-container{
+  &__message{
+    display: none;
+  }
+  margin-bottom: 10px;
+}
+
 .text-field{
-  &-ordinary{
+  &-ordinary {
     height: 64px;
     width: 343px;
-    display: flex;
-    align-items: center;
     padding: 0 20px;
-    &>.icon{
+
+    & > .icon {
       width: 24px;
       height: 24px;
       display: none;
+      @include animate-prop('hideIcon');
     }
-    &__input{
+
+    &__input {
       background-color: inherit;
       width: 100%;
+      border: 0;
+      padding: 0 0 0 0;
+      @extend %f, %f-Description-items;
+      color: $color_white;
+    }
+
+    &__label {
+      @extend %f, %f-Description-items;
+      color: $color_gray;
+      transition: transform 200ms;
+      position: absolute;
+      pointer-events: none;
+    }
+  }
+  &_activated {
+    @include animate-prop('showIcon');
+  }
+
+  &_error {
+    border: 1px solid #FF2424;
+    @include animate-prop('showIcon');
+
+    &__label {
+      color: $color_error;
+    }
+
+    & ~ .input-container__message {
+      display: inherit;
+      @extend %f, %f-helpertext;
+      color: $color_error;
+      margin-left: 20px;
+    }
+
+    }
+  &_potential-clean{
+    &>.icon {
+      cursor: pointer;
+    }
+    @include animate-prop('showIcon');
+  }
+  &_inactive{
+    @include animate-prop('hideIcon');
+    &>.icon {
+      cursor: auto;
+    }
+  }
+
+  &-small{
+    height: 36px;
+    width: 343px;
+    padding: 0 0 0 20px;
+    border-radius: 8px;
+    &__input{
+      background-color: inherit;
+      width: inherit;
       border: 0;
       padding: 0 0 0 0;
       @extend %f,%f-Description-items;
       color: $color_white;
       }
     &__label{
-      @extend %f,%f-Description-items;
-      color: $color_gray;
-      transition: transform 200ms;
-      position: absolute;
-      pointer-events: none;
+      display: none;
     }
-    }
-    &_activated{
-      &>.icon{
-        display: inherit;
-        animation-name: activate;
-        animation-duration: 1s;
-        animation-fill-mode: forwards;
-        animation-play-state: paused;
+    &>.icon{
+      width: 30px;
+      height: 30px;
+      //display: none;
+      cursor: inherit;
+      use{
+        pointer-events: none;
       }
     }
-
-
-
-  &-small{
-    height: 36px;
+    &_promo{
+      &>.icon{
+        width: 36px;
+        height: 36px;
+        background-color: $color_gray;
+        border-radius: 50%;
+      }
+    }
+  }
+  &-search{
+    border-radius: 23px;
     width: 343px;
+    height: 40px;
+    padding: 0 0 0 20px;
+    &__input{
+      background-color: inherit;
+      width: inherit;
+      border: 0;
+      padding: 0 0 0 0;
+      @extend %f,%f-Description-items;
+      color: $color_white;
+    }
+    &__label{
+      display: none;
+    }
+    &>.icon{
+      width: 14px;
+      height: 14px;
+      margin: 0 13px 0 0;
+      animation-play-state: paused;
+    }
   }
   background-color:$color_dark;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
+  overflow: hidden;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
 }
 
-.input:focus ~ .placeholder, .input:not(:placeholder-shown) ~ .placeholder  {
+.text-field-ordinary__input:focus ~ .placeholder, .text-field-ordinary__input:not(:placeholder-shown) ~ .placeholder  {
   transform: translateY(-20px);
   @extend %f-helpertext;
-
 }
-.input-container{
-  &__message{
-    display: none;
-  }
-}
-

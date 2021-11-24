@@ -136,16 +136,26 @@ input {
   outline: none;
 }
 
+button {
+  outline: none !important;
+  border: none;
+}
+
 /*Import Family*/
 
 /*Font-Selectors*/
 
+.text-field-search__input,
+.text-field-small__input,
+.text-field_error ~ .input-container__message,
 .text-field-ordinary__label,
 .text-field-ordinary__input {
   font-family: Metropolis, sans-serif;
   color: #F7F7F7;
 }
 
+.text-field-search__input,
+.text-field-small__input,
 .text-field-ordinary__label,
 .text-field-ordinary__input {
   font-size: 14px;
@@ -153,26 +163,35 @@ input {
   line-height: 20px;
 }
 
-.input:not(:-moz-placeholder-shown) ~ .placeholder {
+.text-field-ordinary__input:not(:-moz-placeholder-shown) ~ .placeholder {
   font-size: 11px;
   font-weight: 400;
   line-height: 11px;
   letter-spacing: -0.15px;
 }
 
-.input:not(:-ms-input-placeholder) ~ .placeholder {
+.text-field-ordinary__input:not(:-ms-input-placeholder) ~ .placeholder {
   font-size: 11px;
   font-weight: 400;
   line-height: 11px;
   letter-spacing: -0.15px;
 }
 
-.input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
+.text-field-ordinary__input:focus ~ .placeholder,
+.text-field-ordinary__input:not(:placeholder-shown) ~ .placeholder,
+.text-field_error ~ .input-container__message {
   font-size: 11px;
   font-weight: 400;
   line-height: 11px;
   letter-spacing: -0.15px;
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.input-container__message {
+  display: none;
 }
 
 .text-field {
@@ -180,17 +199,21 @@ input {
   -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
-}
-
-.text-field-ordinary {
-  height: 64px;
-  width: 343px;
+  overflow: hidden;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.text-field-ordinary {
+  height: 64px;
+  width: 343px;
   padding: 0 20px;
 }
 
@@ -198,6 +221,18 @@ input {
   width: 24px;
   height: 24px;
   display: none;
+}
+
+.text-field-ordinary > .icon > .icon {
+  display: block;
+  -webkit-animation-name: "hideIcon";
+  animation-name: "hideIcon";
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
 }
 
 .text-field-ordinary__input {
@@ -220,40 +255,152 @@ input {
 }
 
 .text-field_activated > .icon {
-  display: inherit;
-  -webkit-animation-name: activate;
-  animation-name: activate;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  display: block;
+  -webkit-animation-name: "showIcon";
+  animation-name: "showIcon";
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+
+.text-field_error {
+  border: 1px solid #FF2424;
+}
+
+.text-field_error > .icon {
+  display: block;
+  -webkit-animation-name: "showIcon";
+  animation-name: "showIcon";
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+
+.text-field_error__label {
+  color: #FF2424;
+}
+
+.text-field_error ~ .input-container__message {
+  display: inherit;
+  color: #FF2424;
+  margin-left: 20px;
+}
+
+.text-field_potential-clean > .icon {
+  cursor: pointer;
+}
+
+.text-field_potential-clean > .icon {
+  display: block;
+  -webkit-animation-name: "showIcon";
+  animation-name: "showIcon";
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+
+.text-field_inactive > .icon {
+  display: block;
+  -webkit-animation-name: "hideIcon";
+  animation-name: "hideIcon";
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+
+.text-field_inactive > .icon {
+  cursor: auto;
 }
 
 .text-field-small {
   height: 36px;
   width: 343px;
+  padding: 0 0 0 20px;
+  border-radius: 8px;
 }
 
-.input:not(:-moz-placeholder-shown) ~ .placeholder {
+.text-field-small__input {
+  background-color: inherit;
+  width: inherit;
+  border: 0;
+  padding: 0 0 0 0;
+  color: #F7F7F7;
+}
+
+.text-field-small__label {
+  display: none;
+}
+
+.text-field-small > .icon {
+  width: 30px;
+  height: 30px;
+  cursor: inherit;
+}
+
+.text-field-small > .icon use {
+  pointer-events: none;
+}
+
+.text-field-small_promo > .icon {
+  width: 36px;
+  height: 36px;
+  background-color: #ABB4BD;
+  border-radius: 50%;
+}
+
+.text-field-search {
+  border-radius: 23px;
+  width: 343px;
+  height: 40px;
+  padding: 0 0 0 20px;
+}
+
+.text-field-search__input {
+  background-color: inherit;
+  width: inherit;
+  border: 0;
+  padding: 0 0 0 0;
+  color: #F7F7F7;
+}
+
+.text-field-search__label {
+  display: none;
+}
+
+.text-field-search > .icon {
+  width: 14px;
+  height: 14px;
+  margin: 0 13px 0 0;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.text-field-ordinary__input:not(:-moz-placeholder-shown) ~ .placeholder {
   transform: translateY(-20px);
 }
 
-.input:not(:-ms-input-placeholder) ~ .placeholder {
+.text-field-ordinary__input:not(:-ms-input-placeholder) ~ .placeholder {
   -ms-transform: translateY(-20px);
   transform: translateY(-20px);
 }
 
-.input:focus ~ .placeholder,
-.input:not(:placeholder-shown) ~ .placeholder {
+.text-field-ordinary__input:focus ~ .placeholder,
+.text-field-ordinary__input:not(:placeholder-shown) ~ .placeholder {
   -webkit-transform: translateY(-20px);
   -ms-transform: translateY(-20px);
   transform: translateY(-20px);
-}
-
-.input-container__message {
-  display: none;
 }
 @supports (-webkit-appearance:none){
 

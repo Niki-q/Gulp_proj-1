@@ -1,0 +1,9 @@
+@mixin animate-prop($name){
+  &>.icon{
+    display: block;
+    animation-name: $name;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
+}
